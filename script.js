@@ -177,6 +177,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // LOAD PRODUCTS IMMEDIATELY - This will ensure products show up
     loadProductsImmediately();
 
+    // Update team images
+    updateTeamImages();
+
     // Add animation to elements when they come into view
     const animateOnScroll = function() {
         const elements = document.querySelectorAll('.product-card, .feature-card, .team-member');
@@ -374,18 +377,20 @@ function loadProductsImmediately() {
         {
             name: "Air Compressors",
             description: "Provide essential aeration for fish ponds and tanks to maintain oxygen levels for healthy fish.",
-            price: 18500,
+            price: 18000,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-wind"
+            image: "images/Air compressor.jpg",
+            fallbackIcon: "fas fa-wind"
         },
         {
             name: "Airhorse",
-            description: "High-performance air pumps designed for large-scale aquaculture operations.",
-            price: 32500,
+            description: "Used to transfer compressed air from an air compressor to pneumatic tools or equipment.",
+            price: 100,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-horse"
+            image: "images/airhorse.jpg",
+            fallbackIcon: "fas fa-horse"
         },
         {
             name: "Aquarium Glass Heater",
@@ -393,7 +398,8 @@ function loadProductsImmediately() {
             price: 4500,
             currency: "KES",
             stock_status: "low",
-            icon: "fas fa-temperature-high"
+            image: "images/aquarium glass heater.jpg",
+            fallbackIcon: "fas fa-temperature-high"
         },
         {
             name: "7-in-1 Water Tester",
@@ -401,7 +407,8 @@ function loadProductsImmediately() {
             price: 8900,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-vial"
+            image: "images/7in1 water tester.jpg",
+            fallbackIcon: "fas fa-vial"
         },
         {
             name: "Airstones",
@@ -409,135 +416,152 @@ function loadProductsImmediately() {
             price: 1200,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-circle"
+            image: "images/airstones.jpg",
+            fallbackIcon: "fas fa-circle"
         },
         {
             name: "Ammonium Test Kit",
             description: "Monitor ammonia levels in water to prevent toxicity to fish.",
-            price: 3500,
+            price: 2500,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-flask"
+            image: "images/ammonium test kit.jpg",
+            fallbackIcon: "fas fa-flask"
         },
         {
             name: "Artemia",
             description: "Live brine shrimp used as high-quality feed for larval fish and shrimp.",
-            price: 2800,
+            price: 3500,
             currency: "KES",
             stock_status: "out",
-            icon: "fas fa-shrimp"
+            image: "images/Artemia.jpg",
+            fallbackIcon: "fas fa-shrimp"
         },
         {
             name: "Buffer Solution",
             description: "Maintain stable pH levels in aquaculture systems for optimal fish health.",
-            price: 2200,
+            price: 500,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-vial"
+            image: "images/buffer solution.jpg",
+            fallbackIcon: "fas fa-vial"
         },
         {
             name: "Dissolved Oxygen Analyzer",
             description: "Precise measurement of oxygen levels in water to ensure fish survival and growth.",
-            price: 45600,
+            price: 4600,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-tint"
+            image: "images/dissolved oxygen analyzer.jpg",
+            fallbackIcon: "fas fa-tint"
         },
         {
             name: "Fish Grader",
             description: "Sort fish by size for uniform growth and efficient management.",
-            price: 18500,
+            price: 5000,
             currency: "KES",
             stock_status: "low",
-            icon: "fas fa-ruler-combined"
+            image: "images/fish-grader.jpg",
+            fallbackIcon: "fas fa-ruler-combined"
         },
         {
             name: "Fishnets",
             description: "Durable nets for harvesting, handling, and transporting fish.",
-            price: 4500,
+            price: 1200,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-fish"
+            image: "images/fishnets.jpg",
+            fallbackIcon: "fas fa-fish"
         },
         {
-            name: "Fresh Tilapia",
-            description: "High-quality live or fresh tilapia fish for consumption or stocking.",
-            price: 650,
+            name: "Fried Tilapia",
+            description: "High-quality fresh fish served with ugali and some greens.",
+            price: 430,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-fish"
+            image: "images/fried tilapia.jpg",
+            fallbackIcon: "fas fa-fish"
         },
         {
             name: "Internal Liquid Filter",
             description: "Efficient filtration systems to maintain water quality in tanks and aquariums.",
-            price: 7800,
+            price: 3000,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-filter"
+            image: "images/Internal liquid filter.jpg",
+            fallbackIcon: "fas fa-filter"
         },
         {
             name: "Kitchen Scale",
             description: "Accurate weighing of fish, feed, and other aquaculture materials.",
-            price: 3200,
+            price: 1500,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-weight"
+            image: "images/kitchen scale.jpg",
+            fallbackIcon: "fas fa-weight"
         },
         {
             name: "NO2 Test Kit",
             description: "Monitor nitrite levels to prevent fish poisoning in closed systems.",
-            price: 2800,
+            price: 1900,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-vial"
+            image: "images/no2 test.jpg",
+            fallbackIcon: "fas fa-vial"
         },
         {
             name: "Ovatide",
             description: "Hormone preparation for induced breeding of fish species.",
-            price: 15000,
+            price: 3000,
             currency: "KES",
             stock_status: "low",
-            icon: "fas fa-prescription-bottle"
+            image: "images/ovatide.jpg",
+            fallbackIcon: "fas fa-prescription-bottle"
         },
         {
             name: "Ovaprim",
             description: "Advanced spawning aid for reliable fish reproduction in hatcheries.",
-            price: 22000,
+            price: 5500,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-prescription-bottle-alt"
+            image: "images/ovaprim.jpg",
+            fallbackIcon: "fas fa-prescription-bottle-alt"
         },
         {
             name: "pH Pen",
-            description: "Portable digital device for quick and accurate pH measurements.",
-            price: 5600,
+            description: "used for measuring the alkalinity or acidity of a liquid.",
+            price: 1000,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-pen"
+            image: "images/portable ph pen.jpg",
+            fallbackIcon: "fas fa-pen"
         },
         {
             name: "Submersible Pump",
             description: "Efficient water circulation and transfer in aquaculture systems.",
-            price: 12500,
+            price: 16000,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-tint"
+            image: "images/submersible pump.jpg",
+            fallbackIcon: "fas fa-tint"
         },
         {
             name: "Thermometer",
             description: "Monitor water temperature for optimal fish growth and health.",
-            price: 1800,
+            price: 350,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-thermometer-half"
+            image: "images/thermometer.jpg",
+            fallbackIcon: "fas fa-thermometer-half"
         },
         {
             name: "Weanmix",
             description: "Specialized feed for transitioning fish from live food to formulated diets.",
-            price: 4500,
+            price: 3250,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-cube"
+            image: "images/wean mix.jpg",
+            fallbackIcon: "fas fa-cube"
         },
         {
             name: "Vento Airpump",
@@ -545,15 +569,17 @@ function loadProductsImmediately() {
             price: 9800,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-wind"
+            image: "images/vento airpump.jpg",
+            fallbackIcon: "fas fa-wind"
         },
         {
             name: "Water Tester",
             description: "Comprehensive testing kits for various water quality parameters.",
-            price: 6700,
+            price: 5000,
             currency: "KES",
             stock_status: "available",
-            icon: "fas fa-vial"
+            image: "images/water tester.jpg",
+            fallbackIcon: "fas fa-vial"
         },
         {
             name: "Zero Oxygen",
@@ -561,11 +587,150 @@ function loadProductsImmediately() {
             price: 8900,
             currency: "KES",
             stock_status: "low",
-            icon: "fas fa-ban"
+            image: "images/zero oxygen.jpg",
+            fallbackIcon: "fas fa-ban"
         }
     ];
 
     displayProducts(products);
+}
+
+// Update team member images
+function updateTeamImages() {
+    const teamMembers = [
+        { name: 'Janeffer Nafula', image: 'images/janeffer nafula.jpg' },
+        { name: 'Lorna Nandwa', image: 'images/lorna nandwa.jpg' },
+        { name: 'Caroline Awino', image: 'images/caroline awino.jpg' },
+        { name: 'Vanessa Musula', image: 'images/vanessa-musula.jpg' },
+        { name: 'Mercy Achieng', image: 'images/mercy achieng.jpg' }
+    ];
+
+    teamMembers.forEach(member => {
+        // Find team member by name
+        const teamMemberElements = document.querySelectorAll('.team-member');
+        teamMemberElements.forEach(element => {
+            const nameElement = element.querySelector('h3');
+            if (nameElement && nameElement.textContent.includes(member.name)) {
+                const imageContainer = element.querySelector('.member-image');
+                if (imageContainer) {
+                    // Replace placeholder with actual image
+                    imageContainer.innerHTML = `
+                        <img src="${member.image}" alt="${member.name}"
+                             style="width: 100%; height: 100%; object-fit: cover;"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="image-placeholder" style="display: none;">
+                            <i class="fas fa-user"></i>
+                            <p>${member.name}</p>
+                        </div>
+                    `;
+                }
+            }
+        });
+    });
+}
+
+// Display products in grid
+function displayProducts(products) {
+    const productsGrid = document.querySelector('.products-grid');
+    if (!productsGrid) {
+        console.error('Products grid element not found!');
+        return;
+    }
+
+    productsGrid.innerHTML = '';
+
+    products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+
+        // Stock status
+        let stockText = '';
+        let stockClass = '';
+        switch(product.stock_status) {
+            case 'available':
+                stockText = 'In Stock';
+                stockClass = 'stock-available';
+                break;
+            case 'low':
+                stockText = 'Low Stock';
+                stockClass = 'stock-low';
+                break;
+            case 'out':
+                stockText = 'Out of Stock';
+                stockClass = 'stock-out';
+                break;
+        }
+
+        productCard.innerHTML = `
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}"
+                     style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="image-placeholder" style="display: none;">
+                    <i class="${product.fallbackIcon || 'fas fa-fish'}"></i>
+                    <p>${product.name}</p>
+                </div>
+            </div>
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <div class="product-price">
+                <span class="currency">${product.currency}</span>
+                ${parseFloat(product.price).toLocaleString()}
+            </div>
+            <div class="product-stock ${stockClass}">
+                <i class="fas ${product.stock_status === 'available' ? 'fa-check-circle' : product.stock_status === 'low' ? 'fa-exclamation-circle' : 'fa-times-circle'}"></i>
+                ${stockText}
+            </div>
+            <div class="product-actions">
+                <button class="order-btn" ${product.stock_status === 'out' ? 'disabled' : ''}
+                        data-product="${product.name}" data-price="${product.price}">
+                    <i class="fas fa-shopping-cart"></i>
+                    ${product.stock_status === 'out' ? 'Out of Stock' : 'Order Now'}
+                </button>
+                <button class="wishlist-btn" title="Add to Wishlist">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+        `;
+        productsGrid.appendChild(productCard);
+    });
+
+    // Add event listeners for the new product cards
+    addProductEventListeners();
+}
+
+function addProductEventListeners() {
+    // Order button functionality
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('order-btn') || e.target.closest('.order-btn')) {
+            const orderBtn = e.target.classList.contains('order-btn') ? e.target : e.target.closest('.order-btn');
+            if (!orderBtn.disabled) {
+                const productName = orderBtn.getAttribute('data-product');
+                const productPrice = orderBtn.getAttribute('data-price');
+                openOrderModal(productName, productPrice);
+            }
+        }
+
+        // Wishlist button functionality
+        if (e.target.classList.contains('wishlist-btn') || e.target.closest('.wishlist-btn')) {
+            const wishlistBtn = e.target.classList.contains('wishlist-btn') ? e.target : e.target.closest('.wishlist-btn');
+            const heartIcon = wishlistBtn.querySelector('i');
+
+            if (heartIcon.classList.contains('far')) {
+                heartIcon.classList.remove('far');
+                heartIcon.classList.add('fas');
+                wishlistBtn.style.backgroundColor = 'var(--primary)';
+                wishlistBtn.style.color = 'var(--white)';
+                showSuccessMessage('Added to wishlist!');
+            } else {
+                heartIcon.classList.remove('fas');
+                heartIcon.classList.add('far');
+                wishlistBtn.style.backgroundColor = 'transparent';
+                wishlistBtn.style.color = 'var(--primary)';
+                showSuccessMessage('Removed from wishlist!');
+            }
+        }
+    });
 }
 
 // Notification System
@@ -759,104 +924,4 @@ function closeOrderModal() {
     if (modal) {
         modal.classList.remove('active');
     }
-}
-
-function displayProducts(products) {
-    const productsGrid = document.querySelector('.products-grid');
-    if (!productsGrid) {
-        console.error('Products grid element not found!');
-        return;
-    }
-
-    productsGrid.innerHTML = '';
-
-    products.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-
-        // Stock status
-        let stockText = '';
-        let stockClass = '';
-        switch(product.stock_status) {
-            case 'available':
-                stockText = 'In Stock';
-                stockClass = 'stock-available';
-                break;
-            case 'low':
-                stockText = 'Low Stock';
-                stockClass = 'stock-low';
-                break;
-            case 'out':
-                stockText = 'Out of Stock';
-                stockClass = 'stock-out';
-                break;
-        }
-
-        productCard.innerHTML = `
-            <div class="product-image">
-                <div class="image-placeholder">
-                    <i class="${product.icon || 'fas fa-fish'}"></i>
-                    <p>Add ${product.name} image</p>
-                </div>
-            </div>
-            <h3>${product.name}</h3>
-            <p>${product.description}</p>
-            <div class="product-price">
-                <span class="currency">${product.currency}</span>
-                ${parseFloat(product.price).toLocaleString()}
-            </div>
-            <div class="product-stock ${stockClass}">
-                <i class="fas ${product.stock_status === 'available' ? 'fa-check-circle' : product.stock_status === 'low' ? 'fa-exclamation-circle' : 'fa-times-circle'}"></i>
-                ${stockText}
-            </div>
-            <div class="product-actions">
-                <button class="order-btn" ${product.stock_status === 'out' ? 'disabled' : ''}
-                        data-product="${product.name}" data-price="${product.price}">
-                    <i class="fas fa-shopping-cart"></i>
-                    ${product.stock_status === 'out' ? 'Out of Stock' : 'Order Now'}
-                </button>
-                <button class="wishlist-btn" title="Add to Wishlist">
-                    <i class="far fa-heart"></i>
-                </button>
-            </div>
-        `;
-        productsGrid.appendChild(productCard);
-    });
-
-    // Add event listeners for the new product cards
-    addProductEventListeners();
-}
-
-function addProductEventListeners() {
-    // Order button functionality
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('order-btn') || e.target.closest('.order-btn')) {
-            const orderBtn = e.target.classList.contains('order-btn') ? e.target : e.target.closest('.order-btn');
-            if (!orderBtn.disabled) {
-                const productName = orderBtn.getAttribute('data-product');
-                const productPrice = orderBtn.getAttribute('data-price');
-                openOrderModal(productName, productPrice);
-            }
-        }
-
-        // Wishlist button functionality
-        if (e.target.classList.contains('wishlist-btn') || e.target.closest('.wishlist-btn')) {
-            const wishlistBtn = e.target.classList.contains('wishlist-btn') ? e.target : e.target.closest('.wishlist-btn');
-            const heartIcon = wishlistBtn.querySelector('i');
-
-            if (heartIcon.classList.contains('far')) {
-                heartIcon.classList.remove('far');
-                heartIcon.classList.add('fas');
-                wishlistBtn.style.backgroundColor = 'var(--primary)';
-                wishlistBtn.style.color = 'var(--white)';
-                showSuccessMessage('Added to wishlist!');
-            } else {
-                heartIcon.classList.remove('fas');
-                heartIcon.classList.add('far');
-                wishlistBtn.style.backgroundColor = 'transparent';
-                wishlistBtn.style.color = 'var(--primary)';
-                showSuccessMessage('Removed from wishlist!');
-            }
-        }
-    });
 }
