@@ -1,9 +1,15 @@
 <?php
 header('Content-Type: application/json');
-include 'config.php';
-include 'functions.php';
+include '../config.php';
+include '../functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Check rate limit
+    if (!checkRateLimit('register')) {
+        echo json_encode(['success' => false, 'message' => 'Too many registration attempts. Please try again later.']);
+        exit;
+    }
+
     // Validate CSRF token
     if (!isset($_POST['csrf_token']) || !validateCSRFToken($_POST['csrf_token'])) {
         echo json_encode(['success' => false, 'message' => 'Invalid request']);

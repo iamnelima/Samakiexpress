@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: application/json');
-include '../includes/config.php';
+include 'config.php';
+include 'functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = sanitizeInput($_POST['name']);

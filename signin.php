@@ -1,3 +1,8 @@
+<?php
+session_start();
+include 'config.php';
+$csrf_token = generateCSRFToken();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,12 +20,12 @@
                 <h2><i class="fas fa-fish"></i> Samaki Express EA Ltd</h2>
             </div>
             <div class="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#about" class="nav-link">About</a>
-                <a href="index.html#products" class="nav-link">Products</a>
-                <a href="index.html#team" class="nav-link">Our Team</a>
-                <a href="index.html#contact" class="nav-link">Contact</a>
-                <a href="login.html" class="nav-link">Login</a>
+                 <a href="index.php" class="nav-link">Home</a>
+                 <a href="index.php#about" class="nav-link">About</a>
+                 <a href="index.php#products" class="nav-link">Products</a>
+                 <a href="index.php#team" class="nav-link">Our Team</a>
+                 <a href="index.php#contact" class="nav-link">Contact</a>
+                 <a href="login.php" class="nav-link">Login</a>
                 <a href="signin.html" class="nav-link login-btn active">Sign In</a>
             </div>
             <div class="hamburger" id="hamburger">
@@ -41,18 +46,19 @@
                     <button class="toggle-btn" id="signupToggle">Create Account</button>
                 </div>
 
-                <!-- Sign In Form -->
-                <form id="signinForm" class="auth-form active">
+                 <!-- Sign In Form -->
+                 <form id="loginForm" class="auth-form active">
+                    <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
                     <h2>Welcome Back</h2>
                     <p>Sign in to your Samaki Express account</p>
 
                     <div class="form-group">
                         <label for="signinEmail">Email Address</label>
-                        <input type="email" id="signinEmail" placeholder="Enter your email" required>
+                        <input type="email" id="signinEmail" name="email" placeholder="Enter your email" required>
                     </div>
                     <div class="form-group">
                         <label for="signinPassword">Password</label>
-                        <input type="password" id="signinPassword" placeholder="Enter your password" required>
+                        <input type="password" id="signinPassword" name="password" placeholder="Enter your password" required>
                     </div>
                     <div class="form-options">
                         <div class="remember-me">
@@ -66,33 +72,34 @@
 
                 <!-- Sign Up Form -->
                 <form id="signupForm" class="auth-form">
+                    <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
                     <h2>Create Account</h2>
                     <p>Join Samaki Express to access exclusive features</p>
 
                     <div class="form-group">
                         <label for="fullName">Full Name</label>
-                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
                     </div>
                     <div class="form-group">
                         <label for="signupEmail">Email Address</label>
-                        <input type="email" id="signupEmail" placeholder="Enter your email" required>
+                        <input type="email" id="signupEmail" name="email" placeholder="Enter your email" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
                     </div>
                     <div class="form-group">
                         <label for="signupPassword">Password</label>
-                        <input type="password" id="signupPassword" placeholder="Create a password" required>
+                        <input type="password" id="signupPassword" name="password" placeholder="Create a password" required>
                         <small class="password-hint">Password must be at least 6 characters long</small>
                     </div>
                     <div class="form-group">
                         <label for="confirmPassword">Confirm Password</label>
-                        <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
                     </div>
                     <div class="form-group">
                         <label for="userType">Account Type</label>
-                        <select id="userType" required>
+                        <select id="userType" name="userType" required>
                             <option value="">Select account type</option>
                             <option value="farmer">Fish Farmer</option>
                             <option value="distributor">Distributor</option>
@@ -117,6 +124,10 @@
         </div>
     </section>
 
+    <script>
+        // Generate CSRF token from PHP session
+        const csrfToken = '<?php echo generateCSRFToken(); ?>';
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

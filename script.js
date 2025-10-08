@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showLoading('Signing you in...');
 
             const formData = {
+                csrf_token: csrfToken,
                 email: document.getElementById('signinEmail').value,
                 password: document.getElementById('signinPassword').value
             };
@@ -129,10 +130,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     loginForm.reset();
 
-                    // Redirect after success message
-                    setTimeout(() => {
-                        window.location.href = 'index.html';
-                    }, 2000);
+                     // Redirect after success message
+                     setTimeout(() => {
+                         window.location.href = 'index.php';
+                     }, 2000);
 
                 } else {
                     showErrorMessage('Login Failed: ' + data.message);
@@ -271,10 +272,12 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
 
             const formData = {
+                csrf_token: csrfToken,
                 fullName: document.getElementById('fullName').value,
                 email: document.getElementById('signupEmail').value,
                 phone: document.getElementById('phone').value,
                 password: document.getElementById('signupPassword').value,
+                confirmPassword: document.getElementById('confirmPassword').value,
                 userType: document.getElementById('userType').value
             };
 
@@ -925,3 +928,17 @@ function closeOrderModal() {
         modal.classList.remove('active');
     }
 }
+
+// Logout functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const logoutLink = document.getElementById('logout-link');
+    if (logoutLink) {
+        logoutLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                // Redirect to logout script
+                window.location.href = 'logout.php';
+            }
+        });
+    }
+});

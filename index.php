@@ -1,3 +1,10 @@
+<?php
+session_start();
+include 'config.php';
+$isLoggedIn = isLoggedIn();
+$userName = $isLoggedIn ? $_SESSION['user_name'] : '';
+$userInitial = $isLoggedIn ? strtoupper(substr($userName, 0, 1)) : '';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +21,23 @@
             <div class="nav-logo">
                 <h2><i class="fas fa-fish"></i> Samaki Express EA Ltd</h2>
             </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#products" class="nav-link">Products</a>
-                <a href="#team" class="nav-link">Our Team</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="login.html" class="nav-link login-btn">Login</a>
-            </div>
+             <div class="nav-menu" id="nav-menu">
+                 <a href="#home" class="nav-link">Home</a>
+                 <a href="#about" class="nav-link">About</a>
+                 <a href="#products" class="nav-link">Products</a>
+                 <a href="#team" class="nav-link">Our Team</a>
+                 <a href="#contact" class="nav-link">Contact</a>
+                 <?php if ($isLoggedIn): ?>
+                     <div class="profile-icon" title="<?php echo htmlspecialchars($userName); ?>">
+                         <span><?php echo $userInitial; ?></span>
+                         <div class="profile-dropdown">
+                             <a href="#" id="logout-link">Logout</a>
+                         </div>
+                     </div>
+                 <?php else: ?>
+                     <a href="signin.php" class="nav-link login-btn">Login</a>
+                 <?php endif; ?>
+             </div>
             <div class="hamburger" id="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
